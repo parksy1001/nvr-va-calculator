@@ -1,3 +1,11 @@
+/**
+  ---------------------------------------------
+  Modification History:
+    [2025.05.13] Mod: NVR Firmware Version list 
+
+  ---------------------------------------------
+*/
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { 
   PlusCircle, 
@@ -19,9 +27,11 @@ const NVR_MODELS = [
     { model: "DR-6508P", versions: [{ label: "v9.2.0 or Higher", units: 8 },{ label: "v9.1.0", units: 16 }, { label: "Below v9.0.0", units: 8 }] },
     { model: "DR-3516P ", versions: [{ label: "v9.2.0 or Higher", units: 16 },{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 16 }] },
     { model: "DR-M216P", versions: [{ label: "v9.0.0 or 9.1.0", units: 16 }]},
-    { model: "DR-2516P / -A", versions: [{ label: "v9.2.0 or Higher", units: 16 },{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 16 }] },
-    { model: "DR-2508P / -A", versions: [{ label: "v9.2.0 or Higher", units: 8 },{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 8 }] },
-    { model: "DR-2504P / -A / -B / -C ", versions: [{ label: "v9.2.0 or Higher", units: 4 },{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 4 }] }
+    // Start Mod: NVR Firmware Version list 
+    { model: "DR-2516P / -A", versions: [{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 16 }] },
+    { model: "DR-2508P / -A", versions: [{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 8 }] },
+    { model: "DR-2504P / -A / -B / -C ", versions: [{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 4 }] }
+    // End Mod: NVR Firmware Version list 
 ];
 
 const VA_FEATURES = [
