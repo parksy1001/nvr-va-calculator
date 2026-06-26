@@ -15,7 +15,8 @@ import {
   Cpu,
   AlertTriangle,
   CheckCircle2,
-  Lock
+  Lock,
+  RectangleEllipsis
 } from 'lucide-react';
 
 const NVR_MODELS = [
@@ -311,8 +312,8 @@ export default function App() {
                     <aside className="col-span-12 lg:col-span-3 space-y-4">
                         <section className="bg-white p-5 rounded-3xl shadow-sm border border-slate-200">
                             <div className="flex items-center gap-2 mb-5 border-b border-slate-50 pb-3">
-                                <Settings className="w-4 h-4 text-slate-400" />
-                                <h2 className="text-[10px] font-black text-slate-500 uppercase tracking-widest text-nowrap">NVR Selection</h2>
+                                <RectangleEllipsis className="w-4 h-4 text-[#0099B0]" />
+                                <h2 className="text-[10px] font-black uppercase tracking-widest text-nowrap">NVR Selection</h2>
                             </div>
                             <div className="space-y-4">
                                 <div className="space-y-1.5">
