@@ -25,7 +25,7 @@ const NVR_MODELS = [
     { model: "DR-6532P / -A", versions: [{ label: "v9.2.0 or Higher", units: 32 },{ label: "v9.1.0", units: 16 }, { label: "Below v9.0.0", units: 32 }] },
     { model: "DR-6516P / -A", versions: [{ label: "v9.2.0 or Higher", units: 16 },{ label: "v9.1.0", units: 16 }, { label: "Below v9.0.0", units: 16 }] },
     { model: "DR-6508P", versions: [{ label: "v9.2.0 or Higher", units: 8 },{ label: "v9.1.0", units: 16 }, { label: "Below v9.0.0", units: 8 }] },
-    { model: "DR-3516P ", versions: [{ label: "v9.2.0 or Higher", units: 16 },{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 16 }] },
+    { model: "DR-3516P ", versions: [{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 16 }] },
     { model: "DR-M216P", versions: [{ label: "v9.0.0 or 9.1.0", units: 16 }]},
     // Start Mod: NVR Firmware Version list 
     { model: "DR-2516P / -A", versions: [{ label: "v9.1.0", units: 8 }, { label: "Below v9.0.0", units: 16 }] },
@@ -226,7 +226,7 @@ export default function App() {
                     onClick={() => !isLocked && toggleFeature(group.id, feat.id)}
                     disabled={isLocked}
                     className={`p-1 rounded-lg border flex flex-col items-center justify-center gap-0.5 transition-all w-[68px] h-[50px] relative overflow-visible
-                        ${isSelected ? 'border-indigo-500 bg-indigo-50 text-indigo-700 shadow-sm z-10 ring-1 ring-indigo-500/20' : 
+                        ${isSelected ? 'border-[#0099B0] bg-[#eaf7ff] text-[#0099B0] shadow-sm z-10 ring-1 ring-[#0099B0]/20' : 
                           isLocked ? 'border-slate-100 bg-slate-50/50 cursor-not-allowed' : 
                           'border-slate-100 bg-white text-slate-400 hover:border-slate-300 hover:text-slate-600'}`}>
 
@@ -258,13 +258,13 @@ export default function App() {
     };
 
     return (
-        <div className={`min-h-screen font-sans transition-colors duration-300 ${isOverloaded ? 'bg-red-50' : 'bg-slate-50/50'}`}>
+        <div className={`min-h-screen transition-colors duration-300 ${isOverloaded ? 'bg-red-50' : 'bg-slate-50/50'}`}>
             <header className={`sticky top-0 z-50 w-full backdrop-blur-md transition-all duration-500 border-b
                 ${isOverloaded ? 'bg-white/95 border-red-200 shadow-red-100 shadow-lg' : 'bg-white/90 border-slate-200 shadow-sm'}`}>
               <div className="max-w-6xl mx-auto px-4 md:px-6 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <div className={`p-2 rounded-xl shadow-inner flex items-center justify-center transition-colors
-                      ${isOverloaded ? 'bg-red-500 text-white animate-pulse' : 'bg-indigo-600 text-white'}`}>
+                      ${isOverloaded ? 'bg-red-500 text-white animate-pulse' : 'bg-[#0099B0] text-white'}`}>
                       {isOverloaded ? <AlertTriangle className="w-5 h-5" /> : <Cpu className="w-5 h-5" />}
                   </div>
                   <div>
@@ -274,7 +274,7 @@ export default function App() {
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-[10px] font-bold text-slate-500 uppercase">{NVR_MODELS[selectedModelIdx].model}</span>
                       <span className="text-slate-300">|</span>
-                      <span className="text-[10px] font-bold text-indigo-500 uppercase">{currentNVR.label}</span>
+                      <span className="text-[10px] font-bold text-[#0099B0] uppercase">{currentNVR.label}</span>
                     </div>
                   </div>
                 </div>
@@ -285,13 +285,13 @@ export default function App() {
                       <span className={`text-[9px] font-black uppercase tracking-tighter ${isOverloaded ? 'text-red-500' : 'text-slate-400'}`}>
                         {isOverloaded ? 'CRITICAL OVERLOAD' : 'System Resource'}
                       </span>
-                      <span className={`text-xs font-black tabular-nums ${isOverloaded ? 'text-red-600' : 'text-indigo-600'}`}>
+                      <span className={`text-xs font-black tabular-nums ${isOverloaded ? 'text-red-600' : 'text-[#0099B0]'}`}>
                         {totals.units} / {currentNVR.units} <span className="text-[10px] text-slate-400">Throughput</span>
                       </span>
                     </div>
                     <div className="h-2 bg-slate-100 rounded-full overflow-hidden shadow-inner border border-slate-200/50 relative">
                         <div className={`h-full rounded-full transition-all duration-700 ease-out 
-                            ${isOverloaded ? 'bg-red-500' : 'bg-indigo-500'}`}
+                            ${isOverloaded ? 'bg-red-500' : 'bg-[#0099B0]'}`}
                              style={{ width: `${Math.min((totals.units / currentNVR.units) * 100, 100)}%` }} />
                     </div>
                   </div>
@@ -317,21 +317,21 @@ export default function App() {
                             <div className="space-y-4">
                                 <div className="space-y-1.5">
                                     <label className="text-[9px] font-bold text-slate-400 px-1 uppercase tracking-wider">NVR Model</label>
-                                    <select className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none hover:border-indigo-300 transition-colors"
+                                    <select className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none hover:border-[#0099B0] transition-colors"
                                         value={selectedModelIdx} onChange={e => { setSelectedModelIdx(Number(e.target.value))}}>
                                         {NVR_MODELS.map((m, idx) => <option key={idx} value={idx}>{m.model}</option>)}
                                     </select>
                                 </div>
                                 <div className="space-y-1.5">
                                     <label className="text-[9px] font-bold text-slate-400 px-1 uppercase tracking-wider">Firmware Version</label>
-                                    <select className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none hover:border-indigo-300 transition-colors"
+                                    <select className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none hover:border-[#0099B0] transition-colors"
                                         value={selectedVerIdx} onChange={e => setSelectedVerIdx(Number(e.target.value))}>
                                         {NVR_MODELS[selectedModelIdx].versions.map((v, idx) => <option key={idx} value={idx}>{v.label}</option>)}
                                     </select>
                                 </div>
                             </div>
                         </section>
-                        <button onClick={addGroup} className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-xs shadow-lg shadow-indigo-100 transition-all flex items-center justify-center gap-2 active:scale-95 group">
+                        <button onClick={addGroup} className="w-full py-3.5 bg-[#0099B0] hover:bg-[#0099B0] text-white rounded-2xl font-black text-xs shadow-lg shadow-[#c6efff] transition-all flex items-center justify-center gap-2 active:scale-95 group">
                             <PlusCircle className="w-4 h-4 group-hover:rotate-90 transition-transform" /> Add Camera Group
                         </button>
                     </aside>
@@ -358,15 +358,15 @@ export default function App() {
                                     <div className="w-full md:w-52 bg-slate-50/50 p-4 border-b md:border-b-0 md:border-r border-slate-100 flex flex-col justify-between shrink-0">
                                         <div className="space-y-4">
                                             <div className="flex items-center gap-2">
-                                                <Video className="w-4 h-4 text-indigo-500" />
+                                                <Video className="w-4 h-4 text-[#0099B0]" />
                                                 <input type="text" value={group.name} onChange={e => updateGroup(group.id, 'name', e.target.value)}
-                                                    className="bg-transparent font-black text-sm text-slate-800 outline-none w-full border-b border-transparent focus:border-indigo-300" />
+                                                    className="bg-transparent font-black text-sm text-slate-800 outline-none w-full border-b border-transparent focus:border-[#0099B0]" />
                                             </div>
                                             <div className="space-y-3">
                                                 <div className="space-y-1">
                                                     <span className="text-[8px] font-black text-slate-400 uppercase tracking-tighter ml-1">Device Type</span>
                                                     <select value={group.typeId} onChange={e => updateGroup(group.id, 'typeId', e.target.value)}
-                                                        className="w-full bg-white px-2 py-1.5 rounded-lg border border-slate-200 text-[10px] font-bold text-indigo-600 outline-none">
+                                                        className="w-full bg-white px-2 py-1.5 rounded-lg border border-slate-200 text-[10px] font-bold text-[#0099B0] outline-none">
                                                         {Object.entries(CAMERA_TYPES).map(([id, t]) => {
                                                             const isDisabled = t.minFw === "v9.1.0+" && isOldFirmware;
                                                             return <option key={id} value={id} disabled={isDisabled}>{t.label} {isDisabled ? '(v9.1.0 + Only)' : ''}</option>
@@ -376,7 +376,7 @@ export default function App() {
                                                 <div className="space-y-1">
                                                     <span className="text-[8px] font-black text-slate-400 uppercase tracking-tighter ml-1">Device Qty</span>
                                                     <input type="number" min="1" value={group.quantity} onChange={e => updateGroup(group.id, 'quantity', parseInt(e.target.value) || 1)}
-                                                        className="w-full px-2 py-1.5 rounded-lg border border-slate-200 font-black text-xs text-indigo-600 outline-none" />
+                                                        className="w-full px-2 py-1.5 rounded-lg border border-slate-200 font-black text-xs text-[#0099B0] outline-none" />
                                                 </div>
                                             </div>
                                         </div>
@@ -392,7 +392,7 @@ export default function App() {
                                             <div className="flex flex-wrap items-start gap-2">
                                                 {row1Keys.map(key => groupedFeatures[key] && (
                                                     <div key={key} className="border border-slate-100 rounded-xl p-1.5 pb-1 relative mt-2 group/engine transition-colors hover:border-slate-200">
-                                                        <span className="absolute -top-2 left-2 bg-white px-1.5 text-[7px] font-black text-slate-300 group-hover/engine:text-indigo-400 uppercase tracking-tighter border border-slate-50 rounded transition-colors">
+                                                        <span className="absolute -top-2 left-2 bg-white px-1.5 text-[7px] font-black text-slate-300 group-hover/engine:text-[#0099B0] uppercase tracking-tighter border border-slate-50 rounded transition-colors">
                                                             {ENGINE_LABELS[key]}
                                                         </span>
                                                         <div className="flex gap-1">
@@ -404,7 +404,7 @@ export default function App() {
                                                 {/* BI Engines for DV-1304 */}
                                                 {biKeys.map(key => groupedFeatures[key] && (
                                                     <div key={key} className="border border-slate-100 rounded-xl p-1.5 pb-1 relative mt-2 group/engine transition-colors hover:border-slate-200">
-                                                        <span className="absolute -top-2 left-2 bg-white px-1.5 text-[7px] font-black text-slate-300 group-hover/engine:text-indigo-400 uppercase tracking-tighter border border-slate-50 rounded transition-colors">
+                                                        <span className="absolute -top-2 left-2 bg-white px-1.5 text-[7px] font-black text-slate-300 group-hover/engine:text-[#0099B0] uppercase tracking-tighter border border-slate-50 rounded transition-colors">
                                                             {ENGINE_LABELS[key]}
                                                         </span>
                                                         <div className="flex flex-wrap gap-1 max-w-[400px]">
@@ -418,7 +418,7 @@ export default function App() {
                                             <div className="flex flex-wrap items-start gap-2">
                                                 {row2Keys.map(key => groupedFeatures[key] && (
                                                     <div key={key} className="border border-slate-100 rounded-xl p-1.5 pb-1 relative mt-2 group/engine transition-colors hover:border-slate-200">
-                                                        <span className="absolute -top-2 left-2 bg-white px-1.5 text-[7px] font-black text-slate-300 group-hover/engine:text-indigo-400 uppercase tracking-tighter border border-slate-50 rounded transition-colors">
+                                                        <span className="absolute -top-2 left-2 bg-white px-1.5 text-[7px] font-black text-slate-300 group-hover/engine:text-[#0099B0] uppercase tracking-tighter border border-slate-50 rounded transition-colors">
                                                             {ENGINE_LABELS[key]}
                                                         </span>
                                                         <div className="flex gap-1">
@@ -431,14 +431,14 @@ export default function App() {
 
                                         <div className="pt-4 flex items-center justify-between gap-3 border-t border-slate-50 border-dashed mt-6">
                                             <div className="flex items-center gap-3">
-                                                <span className={`text-[9px] font-black px-2 py-0.5 rounded ${usage.enginesCount > 0 ? 'bg-indigo-50 text-indigo-600' : 'bg-slate-50 text-slate-300'}`}>
+                                                <span className={`text-[9px] font-black px-2 py-0.5 rounded ${usage.enginesCount > 0 ? 'bg-[#eaf7ff] text-[#0099B0]' : 'bg-slate-50 text-slate-300'}`}>
                                                     {usage.enginesCount} / {config.maxConcurrentEngines || '∞'} Engines
                                                 </span>
                                                 {config.limitOneFeature && <span className="text-[9px] font-black text-orange-500 bg-orange-50 px-2 py-0.5 rounded border border-orange-100 uppercase tracking-tighter">Single Select Mode</span>}
                                             </div>
                                             <div className="flex items-center gap-1.5">
                                                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Cost:</span>
-                                                <span className="text-sm font-black text-indigo-600">+{usage.units} Throughput</span>
+                                                <span className="text-sm font-black text-[#0099B0]">+{usage.units} Throughput</span>
                                             </div>
                                         </div>
                                     </div>
