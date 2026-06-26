@@ -55,8 +55,8 @@ const VA_FEATURES = [
 ];
 
 const CAMERA_TYPES = {
-    'idla_standard': { label: 'IDLA IP-C', allowedGroups: ['ENGINE_1', 'ENGINE_2'], maxConcurrentEngines: 2 },
-    'idla_pro': { label: 'IDLA Pro IP-C', allowedGroups: ['ENGINE_1', 'ENGINE_2', 'ENGINE_3', 'ENGINE_4', 'ENGINE_5', 'ENGINE_6', 'ENGINE_7'], maxConcurrentEngines: 7, minFw: "v9.1.0+" },
+    'idla_standard': { label: 'Edge AI Camera', allowedGroups: ['ENGINE_1', 'ENGINE_2'], maxConcurrentEngines: 2 },
+    'idla_pro': { label: 'Edge AI Plus Camera', allowedGroups: ['ENGINE_1', 'ENGINE_2', 'ENGINE_3', 'ENGINE_4', 'ENGINE_5', 'ENGINE_6', 'ENGINE_7'], maxConcurrentEngines: 7, minFw: "v9.1.0+" },
     'dv1304': { label: 'DV-1304 1CH', allowedGroups: ['ENGINE_0'], maxConcurrentEngines: 0, limitOneFeature: true  },
     'dv1304a': { label: 'DV-1304-A 1CH', allowedGroups: ['ENGINE_1', 'ENGINE_2'], maxConcurrentEngines: 1, limitOneFeature: true }
 };
