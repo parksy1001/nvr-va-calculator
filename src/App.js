@@ -77,10 +77,15 @@ const FREE_ENGINES_V920 = ['ENGINE_3', 'ENGINE_4'];
 
 export default function App() {
     const [selectedModelIdx, setSelectedModelIdx] = useState(0);
-    const [selectedVerIdx, setSelectedVerIdx] = useState(0); 
-    const [cameraGroups, setCameraGroups] = useState([
-        { id: 1, name: "CH Group 1", typeId: 'idla_standard', selectedFeatureIds: [], quantity: 1 }
-    ]);
+    const [selectedVerIdx, setSelectedVerIdx] = useState(0);
+    const DEFAULT_CAMERA_GROUP = {
+        id: 1,
+        name: "CH Group 1",
+        typeId: 'idla_standard',
+        selectedFeatureIds: [],
+        quantity: 1
+    };
+    const [cameraGroups, setCameraGroups] = useState([DEFAULT_CAMERA_GROUP]);
     const [hoveredFeature, setHoveredFeature] = useState(null);
 
     const currentNVR = NVR_MODELS[selectedModelIdx].versions[selectedVerIdx];
@@ -319,7 +324,13 @@ export default function App() {
                                 <div className="space-y-1.5">
                                     <label className="text-[9px] font-bold text-slate-400 px-1 uppercase tracking-wider">NVR Model</label>
                                     <select className="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold outline-none hover:border-[#0099B0] transition-colors"
-                                        value={selectedModelIdx} onChange={e => { setSelectedModelIdx(Number(e.target.value))}}>
+                                        value={selectedModelIdx}
+                                        onChange={e => { 
+                                            setSelectedModelIdx(Number(e.target.value))
+                                            setSelectedVerIdx(0);
+                                            setCameraGroups([DEFAULT_CAMERA_GROUP]);
+                                        }}
+                                    >
                                         {NVR_MODELS.map((m, idx) => <option key={idx} value={idx}>{m.model}</option>)}
                                     </select>
                                 </div>
