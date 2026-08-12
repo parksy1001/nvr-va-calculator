@@ -65,7 +65,7 @@ const ENGINE_LABELS = {
   'ENGINE_0': 'BI',
   'ENGINE_1': 'Object Engine',
   'ENGINE_2': 'Face Engine ',
-  'ENGINE_3': 'Abadoned Detection Engine',
+  'ENGINE_3': 'Abandoned Detection Engine',
   'ENGINE_4': 'Fall Detection Engine',
   'ENGINE_5': 'Crowd Detection Engine',
   'ENGINE_6': 'Attribute(Object)',
